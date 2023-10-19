@@ -19,6 +19,6 @@ from django.urls import include, path
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # django自带
+    path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),  # drf admin
 ]
