@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,7 +94,6 @@ DATABASES = {
     }
 }
 
-
 # Redis: django-redis
 
 REDIS_HOST = '192.168.1.99'
@@ -103,25 +103,18 @@ REDIS_PASSWD = 'Mjolnir'
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://{REDIS_PASSWD}{REDIS_HOST}:{REDIS_PORT}/0',
+        'LOCATION': f'redis://:{REDIS_PASSWD}@{REDIS_HOST}:{REDIS_PORT}/6',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     },
     'session': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://{REDIS_PASSWD}{REDIS_HOST}:{REDIS_PORT}/1',
+        'LOCATION': f'redis://:{REDIS_PASSWD}@{REDIS_HOST}:{REDIS_PORT}/7',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     },
-    'redis': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://{REDIS_PASSWD}{REDIS_HOST}:{REDIS_PORT}/2',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
 }
 
 # 设置 Django 会话存储为 Redis
@@ -169,3 +162,25 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTHENTICATION_BACKENDS = (
+    'apps.custom_auth.authentication.CustomAuthBackend',
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+        # 'apps.custom_auth.permissons.CustomIsAuthenticated'
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+}
