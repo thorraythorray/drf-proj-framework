@@ -1,2 +1,2 @@
 #!/bin/bash
-pylint --rcfile=./.pylintrc apps workers common util middleware
+pylint --rcfile=./.pylintrc apps workers common utils middleware
