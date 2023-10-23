@@ -1,10 +1,12 @@
-from settings import *
+import settings as CONF
 
+
+ROOT = CONF.BASE_DIR
 
 def setting_dict():
     import settings as conf
-    CONF = dict()
+    _ = dict()
     for i in dir(conf):
         if not i.startswith("_") and getattr(conf, i):
-            CONF[i] = getattr(conf, i)
-    return CONF
+            _[i] = getattr(conf, i)
+    return _

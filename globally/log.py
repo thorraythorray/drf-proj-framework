@@ -4,7 +4,7 @@ import logging.config
 
 import yaml
 
-from globally.config import ROOT
+from globally.internal import ROOT
 
 
 def init_log():

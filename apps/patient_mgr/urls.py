@@ -1,7 +1,8 @@
 from django.urls import path
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+from apps.patient_mgr.views import test
 
 
 urlpatterns = [
-
+    path('test/', test.TestAPIView.as_view()),  # 重置密码
 ]
