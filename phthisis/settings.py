@@ -15,6 +15,8 @@ import sys
 from pathlib import Path
 from datetime import timedelta
 
+from etc.local import *
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -85,11 +87,6 @@ WSGI_APPLICATION = 'wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-MYSQL_HOST = '192.168.1.99'
-MYSQL_PORT = '13306'
-MYSQL_USER = 'root'
-MYSQL_PASSWD = 'Mjolnir'
-MYSQL_DB = 'phthisis'
 
 DATABASES = {
     'default': {
@@ -103,11 +100,6 @@ DATABASES = {
 }
 
 # Redis: django-redis
-
-REDIS_HOST = '192.168.1.99'
-REDIS_PORT = '16379'
-REDIS_PASSWD = 'Mjolnir'
-REDIS_DB = '6'
 
 CACHES = {
     'default': {

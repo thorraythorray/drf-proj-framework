@@ -4,21 +4,17 @@ import pymysql
 from dbutils.pooled_db import PooledDB
 from redis import Redis
 
-from globally.internal import setting_dict
-from utils.singleton import singleton
+from common.singleton import singleton
+from etc import local as local_conf
 
 
 @singleton
 class RedisDBClient:
-    def __init__(self, params):
-        self.host = params["REDIS_HOST"]
-        self.port = params["REDIS_PORT"]
-        self.password = params["REDIS_PASSWD"]
-        self.redis_db = params.get("REDIS_DB")
-        self.redis = Redis.from_url(f"redis://:{self.password}@{self.host}:{self.port}/{self.redis_db}")
+    def __init__(self, url):
+        self.redis = Redis.from_url(url)
 
 
-redis_pool = RedisDBClient(setting_dict()).redis
+redis_pool = RedisDBClient(local_conf.REDIS_URL).redis
 
 
 @singleton
@@ -39,4 +35,4 @@ class DBClient:
         )
 
 
-db_pool = DBClient(setting_dict()).pool
+db_pool = DBClient().pool
