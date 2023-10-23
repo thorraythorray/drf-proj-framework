@@ -12,5 +12,7 @@
 
 ## Install
 ```
+mkdir /var/log/phthisis
+
 pip install -r requirements.txt
 ```
