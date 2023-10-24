@@ -4,5 +4,5 @@ from drfx.phthisis.test_app import views
 
 
 urlpatterns = [
-    path('test/', views.TestAPIView.as_view()),  # 重置密码
+    path('test/', views.TestAPIView.as_view()),
 ]

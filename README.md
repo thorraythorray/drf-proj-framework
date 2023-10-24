@@ -12,7 +12,7 @@
 
 ## Install
 ```
-mkdir /var/log/phthisis
+mkdir /var/log/miscall
 
 pip install -r requirements.txt
 ```

@@ -1,10 +1,12 @@
 import os
 import types
 
+DjangoSetting = 'drfx.phthisis.settings'
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(ROOT, "static")
 CONF_DIR = os.path.join(ROOT, 'config')
-ENV = os.environ.get('ENV', 'local')
+ENV = os.environ.get('DRF_ENV', 'local')
 
 
 class Configuration:

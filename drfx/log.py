@@ -4,7 +4,7 @@ import logging.config
 
 import yaml
 
-from drfx.config import ROOT, ENV
+from drfx.config import ROOT
 
 
 def init_log():
@@ -15,7 +15,7 @@ def init_log():
     with open(log_yaml) as log_file:
         logging_config = yaml.safe_load(log_file)
     logging.config.dictConfig(logging_config)
-    _logger = logging.getLogger(f'app.{ENV}')
+    _logger = logging.getLogger(f'app.prod')
     _logger.name = __name__
     return _logger
 

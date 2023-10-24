@@ -1,6 +1,6 @@
 from django.db import models
 
-from drfx._common.orm import BaseModel
+from drfx.common.orm import BaseModel
 
 
 class TestModel(BaseModel):
