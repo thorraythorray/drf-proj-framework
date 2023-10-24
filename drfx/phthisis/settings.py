@@ -40,14 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_mysql',
     'rest_framework',
+    'corsheaders',
+    'django_mysql',
 
-    'drfx.phthisis.mgr_notify',
-
+    'drfx.phthisis',
+    # 'drfx.phthisis.test_app',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,6 +58,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'http://127.0.0.1:9002',
+    'http://localhost:9002',
+    'http://192.168.1.99:9002',
+)
+# 允许携带cookie
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'drfx.phthisis.urls'
 
@@ -163,3 +173,14 @@ CELERY_TIMEZONE = TIME_ZONE
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+}
