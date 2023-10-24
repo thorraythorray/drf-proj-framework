@@ -3,12 +3,12 @@
 import os
 import sys
 
-from drfx.config import DjangoSetting
+from drfx.config import DJANGO_SETTING
 
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', DjangoSetting)
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', DJANGO_SETTING)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

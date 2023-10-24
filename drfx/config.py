@@ -2,7 +2,7 @@ from enum import Enum, unique
 import os
 import types
 
-DjangoSetting = 'drfx.phthisis.settings'
+DJANGO_SETTING = 'drfx.phthisis.settings'
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(ROOT, "static")

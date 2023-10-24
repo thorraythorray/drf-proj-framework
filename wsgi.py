@@ -11,9 +11,9 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-from drfx.config import DjangoSetting
+from drfx.config import DJANGO_SETTING
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', DjangoSetting)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', DJANGO_SETTING)
 
 application = get_wsgi_application()

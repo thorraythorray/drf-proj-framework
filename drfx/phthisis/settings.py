@@ -126,6 +126,10 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"
 
+# celery workers
+CELERY_BROKER_URL = config.CELERY_BROKER_URL
+CELERY_TIMEZONE = 'Asia/Shanghai'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -162,11 +166,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-CELERY_BROKER_URL = config.CELERY_BROKER_URL
-
-CELERY_TIMEZONE = TIME_ZONE
 
 
 # Default primary key field type
