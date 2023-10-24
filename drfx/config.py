@@ -1,3 +1,4 @@
+from enum import Enum, unique
 import os
 import types
 
@@ -60,5 +61,9 @@ class Configuration:
             exec(compile(config_file.read(), filename, "exec"), d.__dict__)
         return d
 
-
 config = Configuration(CONF_DIR).from_pyfile('{}.py'.format(ENV))
+
+
+@unique
+class CELERY_QUEUE(Enum):
+    TRAFFIC = 'traffic'
