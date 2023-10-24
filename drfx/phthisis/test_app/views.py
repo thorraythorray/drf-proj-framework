@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from workers.traffic import heartbeat
+from drfx.phthisis.test_app.tasks import heartbeat
 
 
 class TestAPIView(APIView):

@@ -10,17 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import os
-import sys
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
 
-from etc.local import *
+from drfx.config import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+# sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -44,12 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'sysadmin',
-
     'rest_framework',
     'django_mysql',
 
-    'patient_mgr',
+    'drfx.phthisis.patient_mgr',
 
 ]
 
@@ -63,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'apps.urls'
+ROOT_URLCONF = 'drfx.phthisis.urls'
 
 TEMPLATES = [
     {
@@ -81,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi.application'
+WSGI_APPLICATION = 'drfx.phthisis.wsgi.application'
 
 
 # Database
@@ -91,11 +87,11 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': MYSQL_DB,
-        'USER': MYSQL_USER,
-        'PASSWORD': MYSQL_PASSWD,
-        'HOST': MYSQL_HOST,  # 如果是本地主机，可以使用 'localhost'
-        'PORT': MYSQL_PORT,  # 默认为 3306
+        'NAME': config.MYSQL_DB,
+        'USER': config.MYSQL_USER,
+        'PASSWORD': config.MYSQL_PASSWD,
+        'HOST': config.MYSQL_HOST,  # 如果是本地主机，可以使用 'localhost'
+        'PORT': config.MYSQL_PORT,  # 默认为 3306
     }
 }
 
@@ -104,14 +100,14 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://:{REDIS_PASSWD}@{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}',
+        'LOCATION': f'redis://:{config.REDIS_PASSWD}@{config.REDIS_HOST}:{config.REDIS_PORT}/{config.REDIS_DB}',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     },
     'session': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://:{REDIS_PASSWD}@{REDIS_HOST}:{REDIS_PORT}/7',
+        'LOCATION': f'redis://:{config.REDIS_PASSWD}@{config.REDIS_HOST}:{config.REDIS_PORT}/7',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -164,7 +160,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'sysadmin.Users'
+# AUTH_USER_MODEL = 'sysadmin.Users'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

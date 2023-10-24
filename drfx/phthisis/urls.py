@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),  # drf admin
 
-    path('v1/patient-mgr/', include('apps.patient_mgr.urls')),
+    path('v1/patient-mgr/', include('drfx.phthisis.test_app.urls')),
 ]

@@ -4,8 +4,8 @@ import pymysql
 from dbutils.pooled_db import PooledDB
 from redis import Redis
 
-from common.singleton import singleton
-from etc import local as local_conf
+from helper.singleton import singleton
+from drfx import config
 
 
 @singleton
@@ -14,7 +14,7 @@ class RedisDBClient:
         self.redis = Redis.from_url(url)
 
 
-redis_pool = RedisDBClient(local_conf.REDIS_URL).redis
+redis_pool = RedisDBClient(config.REDIS_URL).redis
 
 
 @singleton

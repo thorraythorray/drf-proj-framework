@@ -1,5 +1,5 @@
-from globally.log import logger
 from workers.celery_app import app
+from log import logger
 
 
 @app.task
