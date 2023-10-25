@@ -3,13 +3,13 @@ import multiprocessing
 import pathlib
 import os
 
-LOG_PATH = '/var/log/miscall'
+LOG_PATH = '/var/log/avator'
 if not os.path.exists(LOG_PATH):
     os.makedirs(LOG_PATH)
 
 workers = max(2, min(int(multiprocessing.cpu_count() / 2) + 1, 5))
-# bind = '127.0.0.1:9002'
-bind = '0.0.0.0:9002'
+bind = '127.0.0.1:9002'
+# bind = '0.0.0.0:9002'
 worker_class = 'gevent'
 
 threads = 2

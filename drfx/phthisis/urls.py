@@ -17,5 +17,5 @@ Including another URLconf
 from django.urls import include, path
 
 urlpatterns = [
-    path('phthisis/v1/', include('drfx.phthisis.test_app.urls')),
+    path('ji/', include('drfx.phthisis.test_app.urls')),
 ]

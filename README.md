@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ## Install
 ```
-mkdir /var/log/miscall
+mkdir /var/log/avator
 
 cp config/supvisor_phthisis.conf /etc/supervisor/conf.d/
 supervisorctl reload

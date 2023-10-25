@@ -168,6 +168,7 @@ disable=raw-checker-failed,
         import-outside-toplevel,
         protected-access,
         duplicate-code,
+        django-not-configured,
 
 
 # Enable the message, report, category or checker with the given id(s). You can

@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_mysql',
 
-    'drfx.phthisis',
-    # 'drfx.phthisis.test_app',
+    # 'drfx.phthisis',
+    'drfx.phthisis.test_app',
 ]
 
 MIDDLEWARE = [
@@ -58,9 +58,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1:9002',
-    'http://localhost:9002',
-    'http://192.168.1.99:9002',
+    'http://127.0.0.1',
+    'http://localhost',
+    'http://192.168.1.99',
 )
 # 允许携带cookie
 CORS_ALLOW_CREDENTIALS = True
