@@ -16,7 +16,7 @@ def init_log():
         logging_config = yaml.safe_load(log_file)
     logging.config.dictConfig(logging_config)
     _logger = logging.getLogger(f'app.{ENV}')
-    _logger.name = __name__
+    _logger.name = ENV
     return _logger
 
 

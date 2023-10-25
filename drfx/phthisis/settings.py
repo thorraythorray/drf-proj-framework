@@ -132,10 +132,6 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"
 
-# celery workers
-CELERY_BROKER_URL = f'redis://:{REDIS_PASSWD}@{REDIS_HOST}:{REDIS_PORT}/8'
-CELERY_TIMEZONE = 'Asia/Shanghai'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

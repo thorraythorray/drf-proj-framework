@@ -8,6 +8,7 @@ from drfx.log import logger
 class TestAPIView(APIView):
     def get(self, request):
         logger.info("123")
-        heartbeat.delay()
+        # heartbeat.delay()
+        heartbeat.apply_async(queue='traffic')
         logger.info("456")
         return Response(status=200)
