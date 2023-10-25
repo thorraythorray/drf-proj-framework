@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-from drfx.config import config
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
@@ -90,32 +88,40 @@ WSGI_APPLICATION = 'wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+MYSQL_HOST = '192.168.1.99'
+MYSQL_PORT = '13306'
+MYSQL_USER = 'root'
+MYSQL_PASSWD = 'Mjolnir'
+MYSQL_DB = 'phthisis'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config.MYSQL_DB,
-        'USER': config.MYSQL_USER,
-        'PASSWORD': config.MYSQL_PASSWD,
-        'HOST': config.MYSQL_HOST,  # 如果是本地主机，可以使用 'localhost'
-        'PORT': config.MYSQL_PORT,  # 默认为 3306
+        'NAME': MYSQL_DB,
+        'USER': MYSQL_USER,
+        'PASSWORD': MYSQL_PASSWD,
+        'HOST': MYSQL_HOST,  # 如果是本地主机，可以使用 'localhost'
+        'PORT': MYSQL_PORT,  # 默认为 3306
     }
 }
 
 # Redis: django-redis
+REDIS_HOST = '192.168.1.99'
+REDIS_PORT = '16379'
+REDIS_PASSWD = 'Mjolnir'
+REDIS_DB = '6'
 
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://:{config.REDIS_PASSWD}@{config.REDIS_HOST}:{config.REDIS_PORT}/{config.REDIS_DB}',
+        'LOCATION': f'redis://:{REDIS_PASSWD}@{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     },
     'session': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://:{config.REDIS_PASSWD}@{config.REDIS_HOST}:{config.REDIS_PORT}/7',
+        'LOCATION': f'redis://:{REDIS_PASSWD}@{REDIS_HOST}:{REDIS_PORT}/7',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -127,7 +133,7 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"
 
 # celery workers
-CELERY_BROKER_URL = config.CELERY_BROKER_URL
+CELERY_BROKER_URL = f'redis://:{REDIS_PASSWD}@{REDIS_HOST}:{REDIS_PORT}/8'
 CELERY_TIMEZONE = 'Asia/Shanghai'
 
 

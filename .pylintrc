@@ -167,6 +167,7 @@ disable=raw-checker-failed,
         missing-docstring,
         import-outside-toplevel,
         protected-access,
+        duplicate-code,
 
 
 # Enable the message, report, category or checker with the given id(s). You can

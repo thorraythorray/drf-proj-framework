@@ -1,2 +1,2 @@
 #!/bin/bash
-pylint --rcfile=./.pylintrc drfx helper
+pylint --rcfile=./.pylintrc drfx helper workers

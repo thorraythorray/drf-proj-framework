@@ -15,9 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import include, path
-from drfx.phthisis.views import Test2APIView
 
 urlpatterns = [
     path('phthisis/v1/', include('drfx.phthisis.test_app.urls')),
-    path('test2/', Test2APIView.as_view()),
 ]
