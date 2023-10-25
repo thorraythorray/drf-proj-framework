@@ -1,4 +1,3 @@
-from enum import Enum, unique
 import os
 
 from django.conf import settings

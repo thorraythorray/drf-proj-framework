@@ -3,7 +3,6 @@ from rest_framework.response import Response
 
 from drfx.phthisis.test_app.tasks import heartbeat
 from drfx.log import logger
-from workers.celeryconfig import CeleryQueue
 
 
 class TestAPIView(APIView):
