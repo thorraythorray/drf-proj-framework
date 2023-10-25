@@ -14,8 +14,3 @@ ENV = os.environ.get('DRF_ENV', 'local')
 
 # DB
 REDIS_URL = f"redis://:{settings.REDIS_PASSWD}@{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
-
-# celery queues
-@unique
-class CeleryQueue(Enum):
-    TRAFFIC = 'traffic'
